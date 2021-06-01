@@ -2,11 +2,9 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-## categories: 总结、感悟
-
 # Site
 title: '赵海鹏的个人博客'
-subtitle: ''
+subtitle: '赵海鹏的个人博客'
 description: ''
 keywords:
 author: 'zhaohp'
@@ -35,6 +33,7 @@ skip_render:
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
+auto_spacing: true
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
@@ -105,3 +104,16 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+navbar:
+  blog_title: 赵海鹏的个人博客  
+
+about:
+  # avatar: /img/avatar.png
+  name: 赵海鹏
+  intro: 一个人能成为谁，能否获得真正的自由，来自于他的内心。
+
+index:
+  slogan:
+    enable: true
+    text: 一名小小前端开发的迷思与成长  
