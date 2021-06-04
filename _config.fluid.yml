@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '赵海鹏的个人博客'
-subtitle: '赵海鹏的个人博客'
+title: '星辰大海的海'
+subtitle: '赵海鹏的个人网站'
 description: ''
 keywords:
 author: 'zhaohp'
@@ -106,7 +106,7 @@ deploy:
   type: ''
 
 navbar:
-  blog_title: 赵海鹏的个人博客  
+  blog_title: 星辰大海的海  
 
 about:
   # avatar: /img/avatar.png
@@ -116,4 +116,10 @@ about:
 index:
   slogan:
     enable: true
-    text: 一名小小前端开发的迷思与成长  
+    text: 一名小小前端的迷思与成长 
+  auto_excerpt:
+    enable: true  
+  post_meta:
+    date: true
+    category: true
+    tag: true
