@@ -3,7 +3,7 @@ title: JavaScript设计模式实践之命令模式
 theme: github
 date: 2021-01-06
 categories: 
-- 文章
+- JavaScript
 ---
 ### 概念
 

@@ -3,7 +3,7 @@ title: JavaScript设计模式实战之策略模式
 theme: github
 date: 2020-12-29
 categories: 
-- 文章
+- JavaScript
 ---
 ### 概念
 

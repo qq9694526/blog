@@ -3,7 +3,7 @@ title: Vue单元测试代码大全( jest + vue-test-utils)
 theme: github
 date: 2020-08-03
 categories: 
-- 文章
+- Vue
 ---
 > 人(ce)生(shi)如戏，全靠演技(mock)。
 

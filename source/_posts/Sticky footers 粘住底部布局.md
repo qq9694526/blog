@@ -3,7 +3,7 @@ title: Sticky footers 粘住底部布局
 theme: github
 date: 2018-12-03
 categories: 
-- 文章
+- CSS
 ---
 ## 什么是Sticky footers
 在网页设计中，Sticky footers设计是最古老和最常见的效果之一，大多数人都曾经经历过。它可以概括如下：如果页面内容不够长的时候，页脚块粘贴在视窗底部；如果内容足够长时，页脚块会被内容向下推送。

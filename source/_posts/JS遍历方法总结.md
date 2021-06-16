@@ -3,7 +3,7 @@ title: JS遍历方法总结
 theme: github
 date: 2018-12-13
 categories: 
-- 文章
+- JavaScript
 ---
 来来来，新鲜出炉的js遍历总结，比我菜的都看一下。保你戒掉循环，告别模棱两可，达到灵活操作数据的高潮。
 ### for循环

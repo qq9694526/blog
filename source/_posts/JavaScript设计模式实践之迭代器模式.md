@@ -3,7 +3,7 @@ title: JavaScript设计模式实践之迭代器模式
 theme: github
 date: 2020-12-31
 categories: 
-- 文章
+- JavaScript
 ---
 ### 写在前面
 最近在读《JavaScript设计模式与开发实践》，恰逢手头上的工作任务是项目重构。本系列文章就是对本次学习实战的记录和总结。

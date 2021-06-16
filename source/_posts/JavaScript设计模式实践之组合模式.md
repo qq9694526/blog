@@ -3,7 +3,7 @@ title: JavaScript设计模式实践之组合模式
 theme: github
 date: 2021-01-11
 categories: 
-- 文章
+- JavaScript
 ---
 ### 概念
 
