@@ -8,7 +8,7 @@ categories:
 ### 概念
 
 组合模式就是将对象组合成树形结构，且这些对象对外提供一致调用方法的设计。它除了能很好的表现对象之间”部分-整体‘的层次结构外，还能方便我们进行统一调用和遍历的操作。
-![image-20210108185307173](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58397a5594d84ca9861fc9a91b1bdbeb~tplv-k3u1fbpfcp-watermark.image?imageView2/2/w/480/h/480/q/85/interlace/1)
+![组合模式](/img/zuhe.png)
 
 ### 例子
 

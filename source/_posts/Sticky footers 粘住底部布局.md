@@ -7,8 +7,7 @@ categories:
 ---
 ## 什么是Sticky footers
 在网页设计中，Sticky footers设计是最古老和最常见的效果之一，大多数人都曾经经历过。它可以概括如下：如果页面内容不够长的时候，页脚块粘贴在视窗底部；如果内容足够长时，页脚块会被内容向下推送。
-![alt](https://user-gold-cdn.xitu.io/2018/12/3/16771eb005c5e45b?w=1126&h=783&f=png&s=13037)
-[图片来源](http://caibaojian.com/css-5-ways-sticky-footer.html)
+![Sticky footers](/img/sticky-footer.jpeg)
 
 ## 实现它最简单三种方式
 ### 1. 利用margin(推荐，不用担心兼容性问题)

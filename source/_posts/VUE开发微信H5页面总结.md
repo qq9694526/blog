@@ -14,7 +14,8 @@ categories:
 1. 授权跳转在dom渲染之前，体验会好一些；   
 2. 本地存储了openId，前后端均不用频繁的与微信服务器交互。  
 
- ![Alt](https://user-gold-cdn.xitu.io/2018/12/3/16771e70c86266a7?w=861&h=760&f=png&s=89210)
+ ![微信授权流程图](/img/wx-aouth.jpeg)
+
 ## 二、微信jssdk授权
 如果你页面中有用到分享、上传图片、微信支付等功能，那么需要先进行js-sdk授权。我这边封装成了2个方法：initConfig和setShare，方便在路由/页面切换的时候重复调用。
 ```javascript

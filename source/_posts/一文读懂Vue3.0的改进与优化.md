@@ -158,7 +158,7 @@ Hello Vue!
 
 当组件包含功能较多，变得越来越复杂的时候，Options API的方式会导致逻辑关注点分散，继而使得理解和维护组件变得困难。官方文档中的这个大型组件的示例，很好的展示了这点。其中逻辑关注点按颜色进行了分组。
 
-![Vue 选项式 API: 按选项类型分组的代码](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1bbc4bafadbe47af9a38f802cce2a651~tplv-k3u1fbpfcp-zoom-1.image)
+![Vue 选项式 API: 按选项类型分组的代码](/img/vue3-api.png)
 
 为了解决这个问题，使我们能够将同一逻辑关注点相关的代码配置在一起，并实现逻辑复用，组合式 API应运而生。
 
