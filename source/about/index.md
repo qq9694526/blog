@@ -1,5 +1,6 @@
 ---
-title: 关于我
+title: 关于
+layout: about
 date: 2021-04-21 14:16:28
 ---
 ### 初心
