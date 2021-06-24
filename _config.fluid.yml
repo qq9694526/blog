@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '星辰大海的海'
+title: '前端大明白'
 subtitle: '赵海鹏的个人网站'
 description: ''
 keywords:
@@ -106,8 +106,13 @@ deploy:
   type: ''
 
 navbar:
-  blog_title: 星辰大海的海  
-
+  blog_title: 前端大明白
+  menu:
+    - { key: 'home', link: '/', icon: 'iconfont icon-home-fill', name: '首页' }
+    - { key: 'archives', link: '/archives/', icon: 'iconfont icon-archive-fill', name: '归档' }
+    - { key: 'categories', link: '/categories/', icon: 'iconfont icon-category-fill', name: '分类' }
+    - { key: 'about', link: '/about/', icon: 'iconfont icon-user-fill', name: '关于我' }
+  
 about:
   # avatar: /img/avatar.png
   name: 赵海鹏
@@ -122,4 +127,4 @@ index:
   post_meta:
     date: true
     category: true
-    tag: true
+    tag: false
