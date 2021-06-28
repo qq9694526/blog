@@ -1,6 +1,7 @@
 ---
 title: VUE开发微信H5页面总结
 theme: github
+index_img: img/webdesign-3411373_640.jpg
 date: 2018-12-03
 categories: 
 - Vue

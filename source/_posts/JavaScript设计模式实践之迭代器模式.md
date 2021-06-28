@@ -1,6 +1,7 @@
 ---
 title: JavaScript设计模式实践之迭代器模式
 theme: github
+index_img: /img/design.jpg
 date: 2020-12-31
 categories: 
 - JavaScript

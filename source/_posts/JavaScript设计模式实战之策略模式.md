@@ -1,6 +1,7 @@
 ---
 title: JavaScript设计模式实战之策略模式
 theme: github
+index_img: /img/design.jpg
 date: 2020-12-29
 categories: 
 - JavaScript

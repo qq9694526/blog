@@ -1,6 +1,7 @@
 ---
 title: JavaScript设计模式实践之组合模式
 theme: github
+index_img: /img/design.jpg
 date: 2021-01-11
 categories: 
 - JavaScript

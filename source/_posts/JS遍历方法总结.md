@@ -1,6 +1,7 @@
 ---
 title: JS遍历方法总结
 theme: github
+index_img: img/frontend-4342425_640.png
 date: 2018-12-13
 categories: 
 - JavaScript

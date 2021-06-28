@@ -1,6 +1,7 @@
 ---
 title: JavaScript设计模式实战之代理模式
 theme: github
+index_img: /img/design.jpg
 date: 2020-12-30
 categories: 
 - JavaScript

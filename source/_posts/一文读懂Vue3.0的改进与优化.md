@@ -1,6 +1,7 @@
 ---
 title: 一文读懂Vue3.0的改进与优化
 theme: github
+index_img: /img/1624533928540.jpg
 date: 2021-03-17
 categories: 
 - Vue

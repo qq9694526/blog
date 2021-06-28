@@ -1,6 +1,7 @@
 ---
 title: Vue单元测试代码大全( jest + vue-test-utils)
 theme: github
+index_img: img/casette-4398267_640.png
 date: 2020-08-03
 categories: 
 - Vue

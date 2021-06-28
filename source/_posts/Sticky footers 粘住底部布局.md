@@ -1,6 +1,7 @@
 ---
 title: Sticky footers 粘住底部布局
 theme: github
+index_img: img/note-297252_640.png
 date: 2018-12-03
 categories: 
 - CSS
