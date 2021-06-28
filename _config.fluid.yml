@@ -142,11 +142,12 @@ post:
 
 # 关于
 about:
+  subtitle: 只有种下无数的种子,才有机会遍历未知的天空。
   banner_img: /img/bg/4.jpg
   avatar: /img/avatar.png
   name: 赵海鹏
-  intro: 只有种下无数的种子,才有机会遍历未知的天空。
+  intro: 前端大明白 / CBD领跑员
   icons:
    - { class: 'iconfont icon-github-fill', link: 'https://github.com', tip: 'GitHub' }
    - { class: 'iconfont icon-douban-fill', link: 'https://douban.com', tip: '豆瓣' }
-   - { class: 'iconfont icon-wechat-fill', qrcode: '/img/favicon.png' }
+   - { class: 'iconfont icon-wechat-fill', qrcode: '/img/favicon.png', tip: '微信' }
