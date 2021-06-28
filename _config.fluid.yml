@@ -11,6 +11,7 @@ author: 'zhaohp'
 language: zh-CN
 timezone: 'Asia/Shanghai'
 banner_img: /img/bg/373654.jpg
+favicon: /img/favicon.png
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
