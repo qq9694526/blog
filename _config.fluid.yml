@@ -146,7 +146,7 @@ about:
   banner_img: /img/bg/4.jpg
   avatar: /img/avatar.png
   name: 赵海鹏
-  intro: 前端大明白 / CBD领跑员
+  intro: 前端大明白 / CBD领跑员 / 一生所爱鹿目圆
   icons:
    - { class: 'iconfont icon-github-fill', link: 'https://github.com', tip: 'GitHub' }
    - { class: 'iconfont icon-douban-fill', link: 'https://douban.com', tip: '豆瓣' }
