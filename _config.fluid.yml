@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '星辰大海的海'
+title: '赵海鹏的个人网站'
 subtitle: '赵海鹏的个人网站'
 description: ''
 keywords:
@@ -108,7 +108,7 @@ deploy:
   type: ''
 
 navbar:
-  blog_title: 前端大明白
+  blog_title: 赵海鹏的个人网站
   menu:
     - { key: 'home', link: '/', icon: 'iconfont icon-home-fill', name: '首页' }
     - { key: 'archives', link: '/archives/', icon: 'iconfont icon-archive-fill', name: '归档' }
@@ -144,10 +144,10 @@ post:
 about:
   subtitle: 只有种下无数的种子,才有机会遍历未知的天空。
   banner_img: /img/bg/4.jpg
-  avatar: /img/avatar.png
+  avatar: /img/headimg.jpg
   name: 赵海鹏
   intro: 前端大明白 / CBD领跑员 / 一生所爱鹿目圆
   icons:
-   - { class: 'iconfont icon-github-fill', link: 'https://github.com', tip: 'GitHub' }
-   - { class: 'iconfont icon-douban-fill', link: 'https://douban.com', tip: '豆瓣' }
-   - { class: 'iconfont icon-wechat-fill', qrcode: '/img/favicon.png', tip: '微信' }
+   - { class: 'iconfont icon-github-fill', link: 'https://github.com/qq9694526', tip: 'GitHub' }
+   - { class: 'iconfont icon-mail', link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=7dTb1NnY39utnJzDjoKA', tip: '邮箱' }
+   - { class: 'iconfont icon-alipay-fill', qrcode: '/img/zhifubao.jpg', tip: '支付宝' }
