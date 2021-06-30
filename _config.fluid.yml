@@ -130,10 +130,12 @@ index:
 
 # 归档
 archive:
+  subtitle: 写作是你对自己思想的研究和开发
   banner_img: /img/bg/2.jpg
 
 # 分类
 category:
+  subtitle: 一个人能成为谁，能否获得真正的自由，来自于他的内心
   banner_img: /img/bg/3.jpg
 
 # 文章
@@ -142,7 +144,7 @@ post:
 
 # 关于
 about:
-  subtitle: 只有种下无数的种子,才有机会遍历未知的天空。
+  subtitle: 只有种下无数的种子,才有机会遍历未知的天空
   banner_img: /img/bg/4.jpg
   avatar: /img/headimg.jpg
   name: 赵海鹏
