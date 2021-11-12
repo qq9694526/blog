@@ -9,6 +9,7 @@ categories:
 
 ### 分类
 |开发框架|计算机基础|开发工具|开发故事|摘抄|感悟
+编程|摘抄|洞见
 
 ### 标签
 html|css|JavaScript|Vue|http|node
