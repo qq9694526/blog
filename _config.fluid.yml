@@ -152,4 +152,5 @@ about:
   icons:
    - { class: 'iconfont icon-github-fill', link: 'https://github.com/qq9694526', tip: 'GitHub' }
    - { class: 'iconfont icon-mail', link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=7dTb1NnY39utnJzDjoKA', tip: '邮箱' }
-   - { class: 'iconfont icon-alipay-fill', qrcode: '/img/zhifubao.jpg', tip: '支付宝' }
+   - { class: 'iconfont icon-zhihu-fill', link: 'https://juejin.cn/user/4195392102086967/posts?sort=popular', tip: '掘金' }
+  #  - { class: 'iconfont icon-alipay-fill', qrcode: '/img/zhifubao.jpg', tip: '支付宝' }
