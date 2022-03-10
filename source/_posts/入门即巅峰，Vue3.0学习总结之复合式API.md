@@ -2,6 +2,7 @@
 title: 入门即巅峰，Vue3.0学习总结之复合式API
 theme: github
 index_img: /img/1624533928540.jpg
+date: 2021-12-15
 categories: 
 - Vue
 ---

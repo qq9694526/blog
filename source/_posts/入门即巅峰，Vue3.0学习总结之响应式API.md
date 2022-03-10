@@ -2,6 +2,7 @@
 title: 入门即巅峰，Vue3.0学习总结之响应式API
 theme: github
 index_img: /img/1624533928540.jpg
+date: 2021-12-24
 categories: 
 - Vue
 ---
