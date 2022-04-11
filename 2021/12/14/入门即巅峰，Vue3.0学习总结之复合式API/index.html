@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="zhaohp">
+  <meta name="keywords" content="">
+  
+  <title>入门即巅峰，Vue3.0学习总结之复合式API - 码农胖大海的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.zhaohaipeng.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>码农胖大海的个人网站</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg/4.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="入门即巅峰，Vue3.0学习总结之复合式API">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-15 00:00" pubdate>
+        2021年12月15日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">入门即巅峰，Vue3.0学习总结之复合式API</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>写作是对自己思想的开发和研究。</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>先赞后看，已成习惯。大叫好我是奉旨撸码的胖大海。<br>本文旨在通俗易懂的描述“复合式API”的概念、语法和作用，作为自己学习的延续和阶段性成果展示。</p>
+<h3 id="一、什么是复合式API？"><a href="#一、什么是复合式API？" class="headerlink" title="一、什么是复合式API？"></a>一、什么是复合式API？</h3><p>复合式API是Vue3.0新增的、相对于”选项式API“而言的，一种新的组件编写形式。语法层面，主要由setup函数和在其内部调用的生命周期钩子构成，使用时一般还会搭配一些响应式API（下期内容）。</p>
+<ul>
+<li><p>setup函数<br>组合式 API 的入口，一般做为组件选项使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  props: &#123;<br>    name: &#123;<br>      type: <span class="hljs-built_in">String</span>,<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props,context</span>)</span> &#123;<br>    <span class="hljs-comment">// setup 选项是一个接收 props 和 context 的函数</span><br>    <span class="hljs-built_in">console</span>.log(props); <span class="hljs-comment">// &#123; name: &#x27;&#x27; &#125;</span><br>    <span class="hljs-keyword">const</span> defaultName = props.name||<span class="hljs-string">&#x27;码农胖大海&#x27;</span><br>    <span class="hljs-comment">// 这里返回的任何内容可以用于组件的其余部分，模板以及refs获取组件实例后的访问</span><br>    <span class="hljs-keyword">return</span> &#123;<br>      defaultName<br>    &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是在 setup 中你应该避免使用 this，因为setup 选项在组件创建之前执行，此时组件实例还没有生产。</p>
+</li>
+<li><p>生命周期钩子<br>可以通过直接导入 <code>onX</code> 函数来注册生命周期钩子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; onMounted, onUpdated, onUnmounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">const</span> MyComponent = &#123;<br>  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> &#123;<br>    onMounted(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;mounted!&#x27;</span>)<br>    &#125;)<br>    onUpdated(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;updated!&#x27;</span>)<br>    &#125;)<br>    onUnmounted(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;unmounted!&#x27;</span>)<br>    &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>和Vue的生命周期是一致的，除了create，因为setup本身就是这个阶段。</p>
+<p>详情可以参看<a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/composition-api.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90"><strong>选项式 API 的生命周期选项和组合式 API 之间的映射</strong></a></p>
+</li>
+<li><p><code>&lt;script setup&gt;</code></p>
+<p>Vue3.2新增的复合式API新写法，是在单文件组件中使用组合式 API 的编译时语法糖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>console.log(&#39;hello script setup&#39;)<br>&lt;&#x2F;script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>里面的代码会被编译成组件 <code>setup()</code> 函数的内容，在每次组件实例被创建的时候执行。内置有<code>defineProps</code> 、 <code>defineEmits</code>等方法，以提供和setup()函数中props和context相似的能力。</p>
+<p>其间定义的所有变量都可以直接在模板使用，包括improt导入的组件或方法（官方：顶层的绑定会被暴露给模板）。但是，当需要通过模板 ref 或者 $parent访问该组件实例时，需要使用defineExpose明确要暴露出去的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class&#x3D;&quot;c-count-wrap&quot;&gt;<br>    &lt;span class&#x3D;&quot;c-count-num&quot;&gt;&#123;&#123; currentTime &#125;&#125;&lt;&#x2F;span&gt;<br>  &lt;&#x2F;div&gt;<br>&lt;&#x2F;template&gt;<br><br>&lt;script setup&gt;<br>let currentTime &#x3D; ref(props.initialValue);<br>let timer &#x3D; null; &#x2F;&#x2F; 定时器<br><br>&#x2F;&#x2F; ...省略很多代码，具体的参看最后一个例子<br>const stop &#x3D; () &#x3D;&gt; &#123;<br>  clearInterval(timer);<br>&#125;;<br><br>&#x2F;&#x2F; 使用defineExpose明确要暴露出去的属性和方法<br>defineExpose(&#123;<br>  stop,<br>&#125;);<br>&lt;&#x2F;script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>相比于普通的 script 语法，它具有更多优势：</p>
+<blockquote>
+<ul>
+<li>更少的样板内容，更简洁的代码。</li>
+<li>能够使用纯 Typescript 声明 props 和抛出事件。</li>
+<li>更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。</li>
+<li>更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="二、它的出现是为了解决什么问题？"><a href="#二、它的出现是为了解决什么问题？" class="headerlink" title="二、它的出现是为了解决什么问题？"></a>二、它的出现是为了解决什么问题？</h3><p>可以帮助我们<strong>更好的</strong>进行代码逻辑的<strong>聚合</strong>和<strong>复用</strong>。</p>
+<p>当一个组件包含功能较多，变得越来越复杂的时候，选项式API的方式有一个弊端。它会导致逻辑关注点分散，继而使得理解和维护组件变得困难。官方文档中的这个大型组件的示例，很好的展示了这点（图中逻辑关注点按颜色进行了分组）。</p>
+<p><img src="http://7niu.zhaohaipeng.com/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png" srcset="/img/loading.gif" lazyload alt="Vue 选项式 API: 按选项类型分组的代码"></p>
+<p>复合式API允许我们将这些分散在data、computed、methods、filters……中的相关逻辑拎出来写在一起，以实现代码逻辑的聚合和复用。类似mixins，但比mixins要灵活，且没有变量覆盖、数据来源不明的问题。</p>
+<h3 id="三、举个例子"><a href="#三、举个例子" class="headerlink" title="三、举个例子"></a>三、举个例子</h3><p>通过一个例子感受下“选项式”和“复合式”的区别。</p>
+<p>这里拿很久之前实现过的倒计时组件举例。代码做了简化，但麻雀虽小，五脏俱全，非常适合练手。<a target="_blank" rel="noopener" href="https://github.com/qq9694526/vue3-study">Github上有完整代码</a></p>
+<p><img src="http://7niu.zhaohaipeng.com/image-20211211172627033.png" srcset="/img/loading.gif" lazyload alt="image-20211211172627033"></p>
+<p>模板部分很简单，由两个颜色的svg图片和中间的数字构成。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;c-count-wrap&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/200/svg&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;110&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;110&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">circle</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;55&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;55&quot;</span> <span class="hljs-attr">r</span>=<span class="hljs-string">&quot;50&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">&quot;#ccc&quot;</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">stroke-linecap</span>=<span class="hljs-string">&quot;round&quot;</span>/&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">circle</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;c-count-process&quot;</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;55&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;55&quot;</span> <span class="hljs-attr">r</span>=<span class="hljs-string">&quot;50&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">&quot;#ff9800&quot;</span> <span class="hljs-attr">stroke-width</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">:stroke-dasharray</span>=<span class="hljs-string">&quot;`$&#123;process&#125;,10000`&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;c-count-num&quot;</span>&gt;</span>&#123;&#123; currentTime &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.c-count-wrap &#123;<br><span class="css">  <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="css">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;</span><br>&#125;<br>.c-count-wrap .c-count-num &#123;<br><span class="css">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">  <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="css">  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;</span><br><span class="css">  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="css">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="css">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);</span><br><span class="css">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;</span><br><span class="css">  <span class="hljs-attribute">white-space</span>: nowrap;</span><br>&#125;<br>.c-count-wrap .c-count-process &#123;<br><span class="css">  <span class="hljs-attribute">transform-origin</span>: <span class="hljs-number">55px</span> <span class="hljs-number">55px</span>;</span><br><span class="css">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">90deg</span>);</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>Js部分则是有2个入参、1个计算属性、3个方法和1个事件。</p>
+<h4 id="选项式API的实现"><a href="#选项式API的实现" class="headerlink" title="选项式API的实现"></a>选项式API的实现</h4><figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml">export default &#123;</span><br><span class="xml">  props: &#123;</span><br><span class="xml">    initialValue: &#123;</span><br><span class="xml">      type: Number,</span><br><span class="xml">      default: 10,</span><br><span class="xml">    &#125;,</span><br><span class="xml">    autoPlay: &#123;</span><br><span class="xml">      type: Boolean,</span><br><span class="xml">      default: true,</span><br><span class="xml">    &#125;,</span><br><span class="xml">  &#125;,</span><br><span class="xml">  data() &#123;</span><br><span class="xml">    return &#123;</span><br><span class="xml">      currentTime: 0,</span><br><span class="xml">      timer: null,</span><br><span class="xml">    &#125;;</span><br><span class="xml">  &#125;,</span><br><span class="xml">  computed: &#123;</span><br><span class="xml">  	// 环形进度条</span><br><span class="xml">    process() &#123;</span><br><span class="xml">      const totalTime = this.initialValue;</span><br><span class="xml">      const currentPercent = parseFloat(this.currentTime / totalTime).toFixed(</span><br><span class="xml">        2</span><br><span class="xml">      );</span><br><span class="xml">      const circleLength = Math.floor(2 * Math.PI * 50);</span><br><span class="xml">      return currentPercent * circleLength;</span><br><span class="xml">    &#125;,</span><br><span class="xml">  &#125;,</span><br><span class="xml">  created() &#123;</span><br><span class="xml">    this.currentTime = this.initialValue;</span><br><span class="xml">    if (this.autoPlay) &#123;</span><br><span class="xml">      this.start();</span><br><span class="xml">    &#125;</span><br><span class="xml">  &#125;,</span><br><span class="xml">  methods: &#123;</span><br><span class="xml">    start() &#123;</span><br><span class="xml">      clearInterval(this.timer);</span><br><span class="xml">      this.timer = setInterval(() =&gt; &#123;</span><br><span class="xml">        if (this.currentTime &lt;= 0) &#123;</span><br><span class="xml">          clearInterval(this.timer);</span><br><span class="xml">          // 派发事件-倒计时结束</span><br><span class="xml">          this.$emit(&quot;turnOver&quot;);</span><br><span class="xml">          return;</span><br><span class="xml">        &#125;</span><br><span class="xml">        this.currentTime -= 1;</span><br><span class="xml">      &#125;, 1000);</span><br><span class="xml">    &#125;,</span><br><span class="xml">    stop() &#123;</span><br><span class="xml">      clearInterval(this.timer);</span><br><span class="xml">    &#125;,</span><br><span class="xml">    reset() &#123;</span><br><span class="xml">      this.stop();</span><br><span class="xml">      this.currentTime = this.initialValue;</span><br><span class="xml">    &#125;,</span><br><span class="xml">  &#125;,</span><br><span class="xml">&#125;;</span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="复合式API的实现"><a href="#复合式API的实现" class="headerlink" title="复合式API的实现"></a>复合式API的实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;<br><span class="hljs-keyword">import</span> &#123; ref, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  props: &#123;<br>    initialValue: &#123;<br>      type: <span class="hljs-built_in">Number</span>,<br>      <span class="hljs-keyword">default</span>: <span class="hljs-number">10</span>,<br>    &#125;,<br>    autoPlay: &#123;<br>      type: <span class="hljs-built_in">Boolean</span>,<br>      <span class="hljs-keyword">default</span>: <span class="hljs-literal">true</span>,<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props,context</span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> currentTime = ref(props.initialValue)<br>    <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span> <span class="hljs-comment">// 定时器</span><br><br>    <span class="hljs-keyword">const</span> start = <span class="hljs-function">()=&gt;</span> &#123;<br>      <span class="hljs-built_in">clearInterval</span>(timer);<br>      timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (currentTime.value &lt;= <span class="hljs-number">0</span>) &#123;<br>          <span class="hljs-built_in">clearInterval</span>(timer);<br>          <span class="hljs-comment">// 派发事件</span><br>          context.emit(<span class="hljs-string">&quot;turnOver&quot;</span>);<br>          <span class="hljs-keyword">return</span>;<br>        &#125;<br>        currentTime.value -= <span class="hljs-number">1</span>;<br>      &#125;, <span class="hljs-number">1000</span>);<br>    &#125;<br>    <span class="hljs-keyword">const</span> stop = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">clearInterval</span>(timer);<br>    &#125;<br>    <span class="hljs-keyword">const</span> reset = <span class="hljs-function">()=&gt;</span> &#123;<br>      stop()<br>      currentTime.value = props.initialValue;<br>    &#125;<br>    <span class="hljs-comment">// 环形进度条</span><br>    <span class="hljs-keyword">const</span> process = computed(<span class="hljs-function">()=&gt;</span>&#123;<br>      <span class="hljs-keyword">const</span> totalTime = props.initialValue;<br>      <span class="hljs-keyword">const</span> currentPercent = <span class="hljs-built_in">parseFloat</span>(currentTime.value / totalTime).toFixed(<br>        <span class="hljs-number">2</span><br>      );<br>      <span class="hljs-keyword">const</span> circleLength = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">50</span>);<br>      <span class="hljs-keyword">return</span> currentPercent * circleLength;<br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (props.autoPlay) &#123;<br>      start();<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      currentTime,<br>      process,<br>      start,<br>      stop,<br>      reset<br>    &#125;<br>  &#125;<br>&#125;;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="script-setup版实现"><a href="#script-setup版实现" class="headerlink" title="script setup版实现"></a>script setup版实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script setup&gt;<br><span class="hljs-comment">// 这里定义的所有变量都可以直接在模板使用，包括improt导入的组件或方法官方：顶层的绑定会被暴露给模板）。但是,</span><br><span class="hljs-comment">// 当需要通过模板 ref 或者 $parent访问该组件实例时，需要使用defineExpose明确要暴露出去的属性</span><br><span class="hljs-keyword">import</span> &#123; ref, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-comment">// 使用defineProps声明props</span><br><span class="hljs-keyword">const</span> props = defineProps(&#123;<br>  initialValue: &#123;<br>    type: <span class="hljs-built_in">Number</span>,<br>    <span class="hljs-keyword">default</span>: <span class="hljs-number">10</span>,<br>  &#125;,<br>  autoPlay: &#123;<br>    type: <span class="hljs-built_in">Boolean</span>,<br>    <span class="hljs-keyword">default</span>: <span class="hljs-literal">true</span>,<br>  &#125;,<br>&#125;);<br><br><span class="hljs-comment">// 使用defineEmits声明emits</span><br><span class="hljs-keyword">const</span> emit = defineEmits([<span class="hljs-string">&quot;turnOver&quot;</span>]);<br><br><span class="hljs-keyword">let</span> currentTime = ref(props.initialValue);<br><span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 定时器</span><br><br><span class="hljs-keyword">const</span> start = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">clearInterval</span>(timer);<br>  timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (currentTime.value &lt;= <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-built_in">clearInterval</span>(timer);<br>      emit(<span class="hljs-string">&quot;turnOver&quot;</span>);<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    currentTime.value -= <span class="hljs-number">1</span>;<br>  &#125;, <span class="hljs-number">1000</span>);<br>&#125;;<br><span class="hljs-keyword">const</span> stop = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">clearInterval</span>(timer);<br>&#125;;<br><span class="hljs-keyword">const</span> reset = <span class="hljs-function">() =&gt;</span> &#123;<br>  stop()<br>  currentTime.value = props.initialValue;<br>&#125;;<br><span class="hljs-comment">// 环形进度条</span><br><span class="hljs-keyword">const</span> process = computed(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> totalTime = props.initialValue;<br>  <span class="hljs-keyword">const</span> currentPercent = <span class="hljs-built_in">parseFloat</span>(currentTime.value / totalTime).toFixed(<span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">const</span> circleLength = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">50</span>);<br>  <span class="hljs-keyword">return</span> currentPercent * circleLength;<br>&#125;);<br><br><span class="hljs-keyword">if</span> (props.autoPlay) &#123;<br>  start();<br>&#125;<br><br><span class="hljs-comment">// 使用defineExpose明确要暴露出去的属性</span><br>defineExpose(&#123;<br>  start,<br>  stop,<br>  reset,<br>&#125;);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>复合式API是Vue3新增的、相较于“选项式API”而言的，一种新的组件编写形式。用以解决选项式API，在大型复杂组件中存在的逻辑关注点分散问题。它可以帮助我们更好的进行代码聚合和复用。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html">https://v3.cn.vuejs.org/guide/composition-api-introduction.html</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/23/%E5%85%A5%E9%97%A8%E5%8D%B3%E5%B7%85%E5%B3%B0%EF%BC%8CVue3.0%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B9%8B%E5%93%8D%E5%BA%94%E5%BC%8FAPI/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">入门即巅峰，Vue3.0学习总结之响应式API</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/14/%E7%99%BD%E5%AB%96%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">手摸手教学之白嫖博客并自动部署</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

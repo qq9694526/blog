@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="zhaohp">
+  <meta name="keywords" content="">
+  
+  <title>入门即巅峰，Vue3.0学习总结之响应式API - 码农胖大海的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.zhaohaipeng.com","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>码农胖大海的个人网站</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg/4.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="入门即巅峰，Vue3.0学习总结之响应式API">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-24 00:00" pubdate>
+        2021年12月24日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">入门即巅峰，Vue3.0学习总结之响应式API</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>写作就像开源，即渡人也渡己。 –码农胖大海</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>先赞后看，已成习惯。大家好，我是在编程世界里苟且偷生的大海。</p>
+<p>本文旨在通俗易懂的描述“响应式API”的概念、作用和语法，作为自己学习的延续和阶段性成果展示。</p>
+<h3 id="一、什么是响应性API"><a href="#一、什么是响应性API" class="headerlink" title="一、什么是响应性API"></a>一、什么是响应性API</h3><ol>
+<li><p>在描述概念之前，先来回顾一下，什么是响应性。</p>
+<blockquote>
+<p>响应性是一种允许我们以声明式的方式去适应变化的编程范例。</p>
+</blockquote>
+<p>适应变化？还是很懵……先来看一个非响应性的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> val1 = <span class="hljs-number">2</span><br><span class="hljs-keyword">let</span> val2 = <span class="hljs-number">3</span><br><span class="hljs-keyword">let</span> sum = val1 + val2<br><span class="hljs-built_in">console</span>.log(sum) <span class="hljs-comment">// 5</span><br>val1 = <span class="hljs-number">3</span><br><span class="hljs-built_in">console</span>.log(sum) <span class="hljs-comment">// 仍然是 5</span><br></code></pre></td></tr></table></figure>
+
+<p>我们改变了第一个值，sum的值并没有改变。</p>
+<p>相反，如果改变一个值，sum被重新计算和赋值了，那么这就是响应性的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      val1:<span class="hljs-number">2</span>,<br>      val2:<span class="hljs-number">3</span><br>    &#125;<br>  &#125;,<br>  computed:&#123;<br>    <span class="hljs-function"><span class="hljs-title">sum</span>(<span class="hljs-params"></span>)</span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.val1 + <span class="hljs-built_in">this</span>.val2<br>    &#125;<br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">created</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.sum) <span class="hljs-comment">// 5</span><br>    <span class="hljs-built_in">this</span>.val1 = <span class="hljs-number">3</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.sum) <span class="hljs-comment">// 6 sum会随着改变</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>Vue中的响应性</p>
+<p>上面例子中用到的computed计算属性，就是Vue对响应性的一种实现。</p>
+<p>除此之外，响应性在Vue中还通常表现为：改变绑定在模板上的数据，视图会自动更新。这就是 Vue引以为傲的“响应性系统”，也是Web前端由“操作DOM”到“数据驱动”巨大变革的基石。</p>
+<p>至于它是如何实现的？这是一个耳熟能详、老生常谈的面试题，“介绍一下Vue的响应式原理”。</p>
+</li>
+<li><p>在回答完什么是响应性后，什么是响应式API也就不言自喻了<br>响应式API是Vue3.0新增的，为 JavaScript 对象创建响应式状态/效果的一系列函数/方法的总称。核心语法包括reactive、ref、coumpetd、watch等</p>
+</li>
+</ol>
+<h3 id="二、核心语法介绍"><a href="#二、核心语法介绍" class="headerlink" title="二、核心语法介绍"></a>二、核心语法介绍</h3><h4 id="reactive"><a href="#reactive" class="headerlink" title="reactive()"></a>reactive()</h4><ol>
+<li><p>该 API 返回一个响应式的对象状态。使我们可以显式的定义一个响应式状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; reactive &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-comment">// 响应式状态</span><br><span class="hljs-keyword">const</span> state = reactive(&#123;<br>  count: <span class="hljs-number">0</span><br>&#125;)<br><span class="hljs-built_in">console</span>.log(state) <span class="hljs-comment">// Proxy &#123;count: 0&#125;</span><br></code></pre></td></tr></table></figure>
+<p>把响应式的对象绑定到模板上，数据变化时，视图就会自动更新。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">state</span> &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>该响应式转换是“深度转换”——它会影响传递对象的所有嵌套 property。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> state = reactive(&#123;<br>  obj: &#123;<br>  	count1: <span class="hljs-number">0</span>, <span class="hljs-comment">// 注意，比上面多了一层嵌套</span><br>  &#125;<br>&#125;)<br><span class="hljs-comment">// state.obj.count1 也是响应式的</span><br></code></pre></td></tr></table></figure></li>
+<li><p>我们定义在data选项中的数据，其响应性也是由 <code>reactive()</code> 实现的。</p>
+<blockquote>
+<p>当从组件中的 <code>data()</code> 返回一个对象时，它在内部交由 <code>reactive()</code> 使其成为响应式对象。</p>
+</blockquote>
+</li>
+<li><p>基于Proxy跟踪数据变化，避免了 Vue 早期版本中存在的响应性失效问题。<br>由于 JavaScript 的限制（Object.defineProperty），Vue <strong>不能检测</strong>数组和对象的变化。响应性在以下场景会失效：</p>
+<ul>
+<li>当添加或移除对象属性时</li>
+<li>当利用索引直接设置一个数组项时</li>
+<li>当修改数组的长度时</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;<br>  data: &#123;<br>    a: <span class="hljs-number">1</span><br>  &#125;<br>&#125;)<br><span class="hljs-comment">// `vm.a` 现在是响应式的</span><br><br>vm.b = <span class="hljs-number">2</span><br><span class="hljs-comment">// `vm.b` 不是响应式的</span><br></code></pre></td></tr></table></figure>
+
+<p>Vue3.0改用ES6的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a> 跟踪数据变化，避免了上述问题。如果打印reactive函数的返回，可以明显看到它是一个Proxy对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> state = reactive(&#123;<br>  count: <span class="hljs-number">0</span><br>&#125;)<br><span class="hljs-built_in">console</span>.log(state) <span class="hljs-comment">// Proxy &#123;count: 0&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>至于，为什么Object.defineProperty的方案有缺陷，以及为什么Proxy能避免这个问题并有着更好的性能，之前在<a target="_blank" rel="noopener" href="https://juejin.cn/post/6940559895330717709">《一文读懂Vue3的改进与优化》</a>中有详细描述，在此就不赘述了。</p>
+</li>
+</ol>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref()"></a>ref()</h4><ol>
+<li><p>接受一个内部值并返回一个响应式且可变的 ref 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">let</span> count = ref(<span class="hljs-number">1</span>)<br><span class="hljs-built_in">console</span>.log(count); <span class="hljs-comment">// RefImpl &#123;_shallow: false, dep: undefined, __v_isRef: true, _rawValue: 1, _value: 1&#125;</span><br></code></pre></td></tr></table></figure>
+<p>对，它和<code>reactive()</code>一样，都能创建响应式对象。区别在于ref可以接受基础类型的值，而reactive不可以。</p>
+</li>
+<li><p>如果接受的值是一个对象，那么它将被 <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/basic-reactivity.html#reactive">reactive</a> 函数处理为深层的响应式对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> refObj = ref(&#123;<br>  count:<span class="hljs-string">&#x27;1&#x27;</span>,<br>&#125;)<br><span class="hljs-built_in">console</span>.log(refObj.value) <span class="hljs-comment">// Proxy &#123;count: &#x27;1&#x27;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>此时<code>ref(obj).value</code> 等效于 <code>reactive(obj)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123;<br>  count:<span class="hljs-string">&#x27;1&#x27;</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(ref(obj).value === reactive(obj)) <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在setup函数中，需要通过.value属性访问和改变它的值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">let</span> count = ref(<span class="hljs-number">1</span>);<br>		<span class="hljs-built_in">console</span>.log(count.value); <span class="hljs-comment">// 1</span><br>		count.value = <span class="hljs-number">2</span><br>		<span class="hljs-built_in">console</span>.log(count.value); <span class="hljs-comment">// 2</span><br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+<li><p>在模板中访问则不需要，Vue会自动对Ref 进行解包</p>
+<blockquote>
+<p>当 ref 作为渲染上下文 (从 <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/composition-api-setup.html">setup()</a> 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次解包内部值。只有访问嵌套的 ref 时需要在模板中添加 <code>.value</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &#x2F;&#x2F; 不需要.value<br>    &lt;span&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;span&gt;<br>    &lt;button @click&#x3D;&quot;count ++&quot;&gt;Increment count&lt;&#x2F;button&gt;<br>    &#x2F;&#x2F; 需要.value<br>    &lt;button @click&#x3D;&quot;nested.count.value ++&quot;&gt;Nested Increment count&lt;&#x2F;button&gt;<br>  &lt;&#x2F;div&gt;<br>&lt;&#x2F;template&gt;<br><br>&lt;script&gt;<br>  import &#123; ref &#125; from &#39;vue&#39;<br>  export default &#123;<br>    setup() &#123;<br>      const count &#x3D; ref(0)<br>      return &#123;<br>        count,<br>        nested: &#123;<br>          count<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>&lt;&#x2F;script&gt;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="toRefs"><a href="#toRefs" class="headerlink" title="toRefs()"></a>toRefs()</h4><p>说白了就是，响应式对象版的 解构赋值。它使我们可以像使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">ES6 解构</a>那样，来获取我们想要的<strong>响应式对象</strong>的属性，且不失去响应性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-keyword">const</span> state = reactive(&#123;<br>  	foo: <span class="hljs-number">1</span>,<br>  	bar: <span class="hljs-number">2</span><br>	&#125;)<br>  <span class="hljs-comment">// 可以在不失去响应性的情况下解构</span><br>  <span class="hljs-keyword">const</span> &#123; foo, bar &#125; = toRefs(state)<br>  <span class="hljs-keyword">return</span> &#123;<br>    foo,<br>    bar<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>像这样辅助类的响应式API还有很多，比如使用 <code>readonly</code> 防止更改响应式对象、使用<code>isRef</code>检查值是否为一个 ref 对象等等，就不一一介绍了。</p>
+<p>原因有二，①仅使用reactive和ref就能满足大多数的应用场景，延后学习，并不妨碍我们“入门”和做项目；②这类API加起来有十来个，需要消耗不少的精力和注意力，放在入门阶段去啃，凭空增加入门难度。</p>
+<p>凡事有个主次，我们大可以走马观花的过一遍API，大致有个印象，等将来用到了再回来补课。</p>
+<h4 id="computed"><a href="#computed" class="headerlink" title="computed()"></a>computed()</h4><p>同选项式API中的computed</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> count = ref(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">const</span> plusOne = computed(<span class="hljs-function">() =&gt;</span> count.value + <span class="hljs-number">1</span>)<br><span class="hljs-built_in">console</span>.log(plusOne.value) <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch()"></a>watch()</h4><p>同选项式API中的watch</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; onMounted, ref, watch &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-comment">// setup中的watch函数，等效选项式API中的watch</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, context</span>)</span> &#123;<br>    <span class="hljs-keyword">let</span> defaultName = ref(<span class="hljs-string">&quot;码农胖大海&quot;</span>);<br>    onMounted(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;mounted!&quot;</span>);<br>      <span class="hljs-comment">// 更新数据以触发watch</span><br>      defaultName.value = <span class="hljs-string">&quot;mounted后的大海&quot;</span>;<br>    &#125;);<br>    watch(defaultName, <span class="hljs-function">(<span class="hljs-params">newValue, oldValue</span>) =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;The defaultName is: &quot;</span> + defaultName.value); <span class="hljs-comment">// The defaultName is: mounted后的大海</span><br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;The defaultName newValue is: &quot;</span> + newValue); <span class="hljs-comment">// The defaultName newValue is: mounted后的大海</span><br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;The defaultName oldValue is: &quot;</span> + oldValue); <span class="hljs-comment">// The defaultName oldValue is: 码农胖大海</span><br>    &#125;);<br>    <span class="hljs-keyword">return</span> &#123;<br>      defaultName,<br>    &#125;;<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h3><p>响应式API可以看做是复合式API的延续，他们是一体的。只是Vue从功能作用上把他们分为了两大类。</p>
+<p>这是《入门即巅峰，Vue3.0学习总结》的第三篇。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6940559895330717709">入门即巅峰，一文读懂Vue3.0的改进与优化</a>  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7041843727958507528">入门即巅峰，Vue3.0学习总结之复合式API</a></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/02/%E6%88%91%E7%9A%84%E5%BE%AE%E7%A0%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">我的微码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/14/%E5%85%A5%E9%97%A8%E5%8D%B3%E5%B7%85%E5%B3%B0%EF%BC%8CVue3.0%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B9%8B%E5%A4%8D%E5%90%88%E5%BC%8FAPI/">
+                        <span class="hidden-mobile">入门即巅峰，Vue3.0学习总结之复合式API</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
